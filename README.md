@@ -1,16 +1,29 @@
 p2-------------------------------------
+
+open pom.xml here copy paste code at last it there 
+
+nxt add the docs folder in src main resources 
+
+
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin <your-repository-url>
+
+creat new repo
+git remote add origin <your-newrepository-url>
+git remote show origin 
+git status 
+
+[pom.xml]
+mvn clean install 
+git add.
+git commit -m "Added docs for deployment"
 git push -u origin master
 
-mvn clean install
-git add docs/*
-git commit -m "Deploy site to GitHub Pages"
-git push origin master
-access the website in pages
+go to git settings pages access websites save
 
+
+src test java (org.test) in that (webpageTest)
 
 package org.test;
 
@@ -54,7 +67,16 @@ driver.quit();
 }
 }
 
-pom.xml
+run this
+
+[pom.xml]
+mvn clean package 
+java -jar target/your-project-name.jar or press tab
+
+mvn site
+mvn deploy
+
+::::pom.xml :::::
 
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -135,12 +157,6 @@ pom.xml
 </project>
 
 
-mvn test
-mvn clean package
-java -jar target/your-project-name.jar
-
-
-
 
 
 
@@ -150,7 +166,7 @@ java -jar target/your-project-name.jar
 p4 -------------------------------------------------------------
 
 Open the pom.xml file.
-Add the following inside the <project> tag:
+add the code after the properties :
 
 <build>
 <plugins>
@@ -183,28 +199,22 @@ Add the following inside the <project> tag:
 </build>
 
 
-
-mvn clean compile
-mvn package
-                     (Locate the JAR File
-After running the above, your .jar file will be located at:)
-
-D:\Idea Projects\MVNGRDLDEMO\target\MVNGRDLDEMO-1.0-SNAPSHOT.jar
-                 Run the JAR File
-      To run the generated JAR file, use:
-java -jar target\MVNGRDLDEMO-1.0-SNAPSHOT.jar
-
-gradle init --type pom
+1.mvn clean compile
+2.mvn package
+3.java -jar ./target/(prgname).jar
+4.mvn clean install
+5.java -jar ./target/(prgname).jar
+6.gradle init --type pom
+  2
+  Yes
 
 Open build.gradle in IntelliJ IDEA.
 plugins {
-id 'java'
+id 'java' (this line add in that )
 }
-group = 'com.example'
-version = '1.0-SNAPSHOT'
-repositories {
-mavenCentral()
-}
+
+also add this at last :
+
 dependencies {
 testImplementation 'junit:junit:4.13.2'
 }
@@ -218,7 +228,7 @@ attributes(
 
 
 gradle clean build
-java -jar build/libs/MVNGRDLDEMO-1.0-SNAPSHOT.jar
+java -jar ./build/libs/..jar
 
 
 
@@ -230,8 +240,9 @@ java -jar build/libs/MVNGRDLDEMO-1.0-SNAPSHOT.jar
 
 
 P3 GRADLE-------------------------------------------------------------------------
+open build.gradle:
+
 plugins {
-id 'java'
 id 'application'
 }
 repositories {
@@ -243,24 +254,42 @@ testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 application {
 mainClass = 'com.example.Main'
 }
+
+open main class delete if class if we want we can add another line of println at last close }
+terminal:
+gradle run
+
+paste docs folder in this
+
+open git bash:
+git init 
+git add .
+git status
+git commit -m "Added the folder"
+git status
+git remote add origin (paste the new repo url)
+git push -u origin master
+
+
+In our repo go to settings ,page,....save
+now open the website that generated
+
+In build.gradle
+
+at dependencies add this remove that:
 dependencies {
 testImplementation 'org.seleniumhq.selenium:selenium-java:4.28.1' // use the latest stable version
-testImplementation 'org.testng:testng:7.4.0' // use the latest stable version
+testImplementation 'org.testng:testng:7.4.0' 
 }
+
+before application add this test:
+
 test {
 useTestNG()
 }
 
-gradle run
-docs copy paste the docs folder
-
-git init
-git add .
-git status
-git commit -m "Deploy website using Gradle"
-git remote add origin (new repo link paste)
-git push -u origin master
-
+src,main ,java,in package create org.test ,
+in that( webpageTest) in java class
 
 package org.test;
 import org.openqa.selenium.WebDriver;
@@ -295,7 +324,9 @@ driver.quit();
 }
 }
 
+
 gradle test
+
 
 type this in build.gradle at last
 jar {
